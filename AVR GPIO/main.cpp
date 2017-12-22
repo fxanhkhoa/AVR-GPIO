@@ -32,7 +32,7 @@ int main(void)
 		// find out if pin 0 or pin 4 of PORTB got low input signal
 		if (((PINB & (1 << 0)) == 0) || (((PINB & (1 << 4)) == 0)))
 		{
-			PORTC = 0xFF;
+			PORTC = 0b00000001; // PORTC |= (1 << 0)
 			mode = 2;
 			//if (mode == 3) mode = 1;
 		}
@@ -83,3 +83,7 @@ void Mode2()
 	}
 }
 
+void bat_led(int i)
+{
+	PORTC |= (1 << i);
+}
